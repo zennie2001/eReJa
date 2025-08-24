@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import { Calendar, Clock, Users } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
 
 export default function Header() {
   const [date, setDate] = useState("");
@@ -10,21 +12,31 @@ export default function Header() {
 
   return (
     <header className="w-full bg-white shadow-md">
-      <div className="container mx-auto flex items-center justify-between px-6 md:px-24 py-3">
+      <div className="container mx-auto flex items-center justify-between px-6 md:px-24 ">
         {/* Logo */}
         <div className="flex items-center gap-2">
-          <div className="font-bold text-2xl text-purple-600">eReJa</div>
+           {/* Logo */}
+        <Link href="/" className="flex items-center gap-2">
+          <Image
+            src="/logo.png"   // <-- put your logo inside public/logo.png
+            alt="eReJa Logo"
+            width={120}
+            height={60}
+            className="object-contain"
+            priority
+          />
+        </Link>
         </div>
 
         {/* Search Bar */}
-        <div className="flex flex-1 items-center justify-center max-w-4xl">
+        <div className="flex flex-1 items-center justify-center max-w-2xl">
           <div className="flex w-full rounded-2xl shadow-sm border">
             <input
               type="text"
               placeholder="Area/Station [e.g. Ginza, Shibuya]"
               className="flex-1 px-4 py-2 border-r outline-none text-sm"
             />
-            <input
+            {/* <input
               type="text"
               placeholder="Keywords [e.g. yakiniku, restaurant name]"
               className="flex-1 px-4 py-2 border-r outline-none text-sm"
@@ -60,7 +72,7 @@ export default function Header() {
                   </option>
                 ))}
               </select>
-            </div>
+            </div> */}
             <button className="bg-orange-500 text-white px-5 py-2 rounded-r-2xl font-medium hover:bg-orange-600">
               Search
             </button>
